@@ -29,14 +29,8 @@ function ProductContainer({ products }) {
   const [searchFilter, setSearchFilter] = useState('');
   const [sortList, setSortList] = useState('default');
 
-  const deleteBtn = (id) => {
-    // 삭제하려는 id를 먼저 찾는다.
-    // 해당 id를 제외한 나머지를 둔다.
-    let deleteItem = filterProducts.find(item => item.id === id);
-    // console.log(deleteItem.title)
-    let result = window.confirm(`정말 ${deleteItem.title}을 삭제하시겠습니까?`);
-    // console.log(result)
-    if (result) {
+  const deleteBtn = (title, id) => {
+    if (id && window.confirm(`정말 ${title}을 삭제하시겠습니까?`)) {
       alert('성공적으로 삭제하였습니다.')
       setFilterProducts(filterProducts.filter(item => item.id !== id));
     }
@@ -93,7 +87,7 @@ function ProductContainer({ products }) {
 
       <ul className="product-list">
         {filterProducts.map(product => (
-          <ProductList key={product.id} product={product} deleteBtn={() => deleteBtn(product.id)} />
+          <ProductList key={product.id} product={product} deleteBtn={() => deleteBtn(product.title, product.id)} />
         ))}
       </ul>
     </div >
