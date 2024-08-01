@@ -6,7 +6,7 @@ import {
 import ProductApp from "./pages/ProductApp";
 import Home from "./pages/Home";
 import Navigation from "./components/Navigation";
-import './css/App.css'
+import './resource/css/App.min.css';
 
 function App() {
   return (

@@ -1,0 +1,13 @@
+.nav {
+  border-bottom: 1px solid #eee;
+  &-item {
+    padding: 1.2rem 1rem;
+    display: inline-block;
+    color: #333;
+    font-weight: 600;
+  }
+
+  &-item.active {
+    color: #40739e;
+  }
+}
