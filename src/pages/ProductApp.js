@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
-import style from '../css/Product.module.css';
-import '../css/Product.module.css';
+import '../resource/css/Product.min.css'
 
-function ProductList({ product, deleteBtn }) {
+function ProductList({ product, onDelete }) {
   return (
     <>
-      <li className={style.itemWrap}>
-        <div className={style.flex}>
-          <span className={style.itemRating}>평점: {product.rating.rate}</span>
-          <figure className={style.itemImage}>
+      <li className='item-wrap'>
+        <div className='flex'>
+          <span className='item-rating'>평점: {product.rating.rate}</span>
+          <figure className='item-img'>
             <img src={product.image} alt={product.title} />
           </figure>
         </div>
-        <h3 className={style.item}>{product.title}</h3>
-        <div className={style.item}>{product.description}</div>
-        <div className={`${style.item} ${style.price}`}>가격: ₩{(product.price * 1200).toLocaleString()}</div>
-        <div className={style.btnWrap}>
-          <button className={style.btn} onClick={deleteBtn}>삭제</button>
+        <h3 className='item'>{product.title}</h3>
+        <div className='item'>{product.description}</div>
+        <div className='item price'>가격: ₩{(product.price * 1200).toLocaleString()}</div>
+        <div className='btn-wrap'>
+          <button className='btn' onClick={onDelete}>삭제</button>
         </div>
       </li>
     </>
@@ -29,45 +28,43 @@ function ProductContainer({ products }) {
   const [searchFilter, setSearchFilter] = useState('');
   const [sortList, setSortList] = useState('default');
 
-  const deleteBtn = (title, id) => {
+  const sortProducts = (searchFilter, sortList, products) => {
+    let filterList = [...products];
+
+    if (searchFilter) {
+      const searchTerm = searchFilter.replace(/\s/g, '').toLowerCase();
+      filterList = products.filter(product =>
+        product.title.replace(/\s/g, '').toLowerCase().includes(searchTerm));
+    }
+
+    if (sortList === 'price') {
+      filterList.sort((a, b) => (a.price - b.price));
+    } else if (sortList === 'rating') {
+      filterList.sort((a, b) => (a.rating.rate - b.rating.rate))
+    }
+
+    setFilterProducts(filterList);
+  }
+
+  useEffect(() => {
+    sortProducts(searchFilter, sortList, products);
+  }, [searchFilter, sortList, products])
+
+
+  const handleDelete = (title, id) => {
     if (id && window.confirm(`정말 ${title}을 삭제하시겠습니까?`)) {
       alert('성공적으로 삭제하였습니다.')
       setFilterProducts(filterProducts.filter(item => item.id !== id));
     }
   }
 
-  const sortProducts = (searchFilter, sortList, products) => {
-    let filterList = products;
-
-    if (searchFilter) {
-      filterList = products.filter(product => product.title.replace(/\s/g, '').toLowerCase().includes(searchFilter.replace(/\s/g, '').toLowerCase()));
-    }
-
-    switch (sortList) {
-      case 'price':
-        filterList = filterList.slice().sort((a, b) => (a.price - b.price));
-        break;
-      case 'rating':
-        filterList = filterList.slice().sort((a, b) => (a.rating.rate - b.rating.rate))
-        break;
-      default:
-        break;
-    }
-
-    setFilterProducts(filterList);
-  }
-
   const getButtonStyle = (type) => {
     return sortList === type ? { backgroundColor: '#87a86f', color: '#Fff' } : {};
   };
 
-  useEffect(() => {
-    sortProducts(searchFilter, sortList, products);
-  }, [searchFilter, sortList, products])
-
   return (
-    <div className={style.container}>
-      <div className={style.flexWrap}>
+    <div className='container'>
+      <div className='flex-wrap'>
         <form>
           <input
             type="text"
@@ -78,16 +75,16 @@ function ProductContainer({ products }) {
           {searchFilter ? <button onClick={() => setSearchFilter('')}>X</button> : null}
         </form>
 
-        <div className={style.btnWrap}>
-          <button onClick={() => setSortList('default')} style={getButtonStyle('default')} className={style.btn}>기본 정렬</button>
-          <button onClick={() => setSortList('price')} style={getButtonStyle('price')} className={style.btn}>가격 정렬</button>
-          <button onClick={() => setSortList('rating')} style={getButtonStyle('rating')} className={style.btn}> 평점 정렬</button >
+        <div className='btnWrap'>
+          <button onClick={() => setSortList('default')} style={getButtonStyle('default')} className='btn'>기본 정렬</button>
+          <button onClick={() => setSortList('price')} style={getButtonStyle('price')} className='btn'>가격 정렬</button>
+          <button onClick={() => setSortList('rating')} style={getButtonStyle('rating')} className='btn'> 평점 정렬</button >
         </div >
       </div>
 
       <ul>
         {filterProducts.map(product => (
-          <ProductList key={product.id} product={product} deleteBtn={() => deleteBtn(product.title, product.id)} />
+          <ProductList key={product.id} product={product} onDelete={() => handleDelete(product.title, product.id)} />
         ))}
       </ul>
     </div >
@@ -120,8 +117,8 @@ function ProductApp() {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div >
-      <h1 className={style.title}>상품 목록</h1>
+    <div className="product-wrap">
+      <h1 className='title'>상품 목록</h1>
       <ProductContainer products={productData} />
     </div>
   )
