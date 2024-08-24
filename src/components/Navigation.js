@@ -6,6 +6,7 @@ function Navigation() {
     <nav className="nav">
       <NavLink to="/" className="nav-item">Home</NavLink>
       <NavLink to="/ProductApp" className="nav-item">ProductApp</NavLink>
+      <NavLink to="/ToDoApp" className="nav-item">ToDoApp</NavLink>
     </nav>
   )
 }

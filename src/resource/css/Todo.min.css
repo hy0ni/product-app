@@ -1,0 +1,109 @@
+@charset "UTF-8";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+  line-height: 2.1428;
+  font-family: "Pretendard", sans-serif;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+.nav {
+  border-bottom: 1px solid #eee;
+}
+.nav-item {
+  padding: 1.2rem 1rem;
+  display: inline-block;
+  color: #333;
+  font-weight: 600;
+}
+.nav-item.active {
+  color: #40739e;
+}
+
+.todo-wrap {
+  width: 100%;
+  max-width: 400px;
+  margin: 2rem auto 0;
+  padding: 2rem;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* 입력 폼 */
+  /* 리스트 아이템 */
+}
+.todo-wrap h1 {
+  margin-bottom: 1.8rem;
+  font-size: 1.4rem;
+  text-align: center;
+}
+.todo-wrap form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+.todo-wrap input[type=text] {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 1rem;
+  margin-right: 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.todo-wrap button {
+  padding: 1rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #28a745;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.todo-wrap button:hover {
+  background-color: #218838;
+}
+.todo-wrap ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.todo-wrap li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.6rem;
+  border-bottom: 1px solid #ddd;
+}
+.todo-wrap li:last-child {
+  border-bottom: none;
+}
+.todo-wrap li input[type=checkbox] {
+  margin-right: 0.6rem;
+  cursor: pointer;
+}
+.todo-wrap li input[type=checkbox]:checked + span {
+  text-decoration: line-through;
+  color: #888;
+}
