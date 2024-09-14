@@ -10,7 +10,7 @@ import './resource/css/App.min.css';
 
 function App() {
   return (
-    <Router basename="/react-app">
+    <Router basename="/product-app">
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />

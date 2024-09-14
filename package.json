@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "product-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -39,7 +39,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://hy0ni.github.io/react-app",
+  "homepage": "https://hy0ni.github.io/product-app",
   "devDependencies": {
     "gh-pages": "^6.1.1"
   }
