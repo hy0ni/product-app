@@ -7,5 +7,5 @@ src/
 │ ├── Home.js  
 │ └── ProductApp.js  
 │  
-├── App.js
+├── App.js  
 └── index.js
