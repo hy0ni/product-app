@@ -166,6 +166,9 @@ button {
     max-width: 500px;
     margin: 0 auto;
   }
+  .btn {
+    cursor: pointer;
+  }
 }
 @media (min-width: 769px) {
   .product-wrap {
