@@ -1,5 +1,11 @@
+// mixin
+@import "../scss/mixin/media_query";
+
 //base
 @import "../scss/base/reset";
 
 //components
 @import "../scss/components/Navigation";
+
+//page
+@import "../scss/page/Product";
