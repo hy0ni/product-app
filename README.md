@@ -6,6 +6,8 @@
 
 Fake Store API 사용하여 상품 정보를 가져오고, 가져온 데이터를 활용하여 구현한 사이트입니다.
 
+[👉🏻 Product Info App](https://hy0ni.github.io/product-app/)
+
 ## 기능
 
 - **상품 목록 조회**: 사용자에게 다양한 상품의 리스트를 카드 형식으로 제공
